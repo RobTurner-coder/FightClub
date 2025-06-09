@@ -1,23 +1,24 @@
-from classes import *
-def main():
-	player1 = Player()
-	player2 = Computer()
-	print(f"Hello {player1.name}")
-	print(f"My name is {player2.name}. I am going to destroy you!")
-	start = True
-	while start == True:
-		
-		player1.get_attack(player2)
-		print(f"{player2.name} has {player2.health} left")		
-		player2.computer_turn(player1)
-		print(f"Your health is {player1.health}")
-		if player2.health <= 0:
-			print(f"{player2.name} is defeated!")
-			print("You win!")
-			start = False
-		elif player1.health <= 0:
-			print(f"{player1.name} is defeaed!")
-			print("Game over!")
-			start = False
+# this allows us to use code from
+# the open-source pygame library
+# throughout this file
+import pygame
+from constants import *
 
-main()
+def main():
+    pygame.init()
+    display = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+    while True:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                return
+            
+        pygame.Surface.fill(display, (0,0, 0))
+        print("Starting Asteroids!")
+        print(f"Screen width: {SCREEN_WIDTH}")
+        print(f"Screen height: {SCREEN_HEIGHT}")
+        pygame.display.flip()
+
+
+
+if __name__ == "__main__":
+    main()
